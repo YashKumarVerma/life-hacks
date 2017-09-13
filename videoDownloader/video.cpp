@@ -4,17 +4,25 @@
 
 using namespace std;
 
-int main(){
-    system("cls");
-    char url[2028];
-    char predefinedCommand[] = "youtube-dl --format best --no-check-certificate ";
-    cout << "\n Enter video url \n";
-    cin >> url;
+int main()
+{
+    char url[2048];
 
-    // use binary to downoad
-    strcat(predefinedCommand,url);
-    cout << " \n Downloading .... \n\n";  
-    system(predefinedCommand);
+    cout << "\n\n";
+    cout << "/-----------------------------------------------\\" << endl;
+    cout << "|                                               |" << endl;
+    cout << "|                                               |" << endl;
+    cout << "| Youtube Video Downloader                      |" << endl;
+    cout << "|                                               |" << endl;
+    cout << "| - by Yash Kumar Verma                         |" << endl;
+    cout << "\\-----------------------------------------------/" << endl << "\n\n";
+    cout << "Enter url of video : ";
+    cin  >> url;
+    cout << "\n\n\n";
+    
+    char command[] = "youtube-dl --format best --no-check-certificate --write-sub  ";
+    strcat(command,url);
+    system(command);
 
     getch();
     return 0;
