@@ -1,5 +1,7 @@
 <?php
 
+error_reporting(0);
+
 while(true){
     
     $url = "http://cbseresults.nic.in/";
@@ -12,17 +14,20 @@ while(true){
 	         )
 	     );
 
-	$webpage = file_get_contents($url, false, $context);
-
-    if(file_get_contents("data")==$webpage){
-        echo "SAME" . PHP_EOL;
+    $webpage = file_get_contents($url, false, $context);
+    
+    if($webpage !== false){
+        if(file_get_contents("data")==$webpage){
+            echo "SAME" . PHP_EOL;
+        }
+        else{
+            echo "CHECK RESULT !" . PHP_EOL;
+            exec("alarm.mp3");
+        }
     }
     else{
-        echo "CHECK RESULT !" . PHP_EOL;
-        exec("alarm.mp3");
+        echo "HTTP FAILED " . PHP_EOL;
     }
 
-
-
-    sleep(60);
+    sleep(5);
 }
